@@ -1,0 +1,24 @@
+{
+  "name": "sorveteria-gelato",
+  "version": "1.0.0",
+  "description": "Aplicação que crie para um mini curso",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Treeek/sorveteria-gelato.git"
+  },
+  "keywords": [
+    "sorvete",
+    "sorveteria",
+    "gelato"
+  ],
+  "author": "John Schmitz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Treeek/sorveteria-gelato/issues"
+  },
+  "homepage": "https://github.com/Treeek/sorveteria-gelato#readme"
+}
