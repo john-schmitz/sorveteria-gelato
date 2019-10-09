@@ -1,5 +1,8 @@
 const db = require('../models');
-
+const {
+  check,
+  validationResult
+} = require('express-validator');
 
 module.exports = {
   all(req, res, next) {
@@ -16,7 +19,10 @@ module.exports = {
     });
   },
   create(req, res, next) {
-
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
   },
   byId(req, res, next) {
 
