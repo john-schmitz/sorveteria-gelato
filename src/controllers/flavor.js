@@ -15,7 +15,7 @@ module.exports = {
     }).then(flavors => {
       return res.send({
         flavors
-      });
+      }).catch(e => next(e));
     });
   },
   create(req, res, next) {
@@ -23,6 +23,11 @@ module.exports = {
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
+    const a = 10;
+    a.split();
+    db.Flavor.create(req.body).then((flavor) => {
+      return res.status(201).json({flavor});
+    }).catch(e => next(e));
   },
   byId(req, res, next) {
 
