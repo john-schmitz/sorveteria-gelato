@@ -1,35 +1,51 @@
 const db = require('../models');
-const {
-  check,
-  validationResult
-} = require('express-validator');
+const Flavor = require('../models/Flavor');
 
 module.exports = {
-  all(req, res, next) {
-    db.Flavor.findAll({
-      where: {
-        quantity: {
-          [db.Sequelize.Op.gt]: 0
+  async all(req, res, next) {
+    try {
+      const flavors = await Flavor.findAll({
+        where: {
+          quantity: {
+            [db.Sequelize.Op.gt]: 0
+          }
         }
-      }
-    }).then(flavors => {
+      });
+
       return res.send({
         flavors
-      }).catch(e => next(e));
-    });
-  },
-  create(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      });
+    } catch (error) {
+      next(error);
     }
-    const a = 10;
-    a.split();
-    db.Flavor.create(req.body).then((flavor) => {
-      return res.status(201).json({flavor});
-    }).catch(e => next(e));
   },
-  byId(req, res, next) {
+  async create(req, res, next) {
+    try {
+      const flavor = await Flavor.create(req.body)
 
+      return res.status(201).json({
+        flavor,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  async byId(req, res, next) {
+    try {
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array()
+        });
+      }
+
+      const { id } = req.params;
+      const flavor = await Flavor.findByPk(id);
+
+      return res.statu(200).jsos({
+        flavor
+      });
+    } catch (error) {
+      next(error);
+    }
   },
 }
