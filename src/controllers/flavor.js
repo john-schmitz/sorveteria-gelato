@@ -32,16 +32,10 @@ module.exports = {
   },
   async byId(req, res, next) {
     try {
-      if (!errors.isEmpty()) {
-        return res.status(422).json({
-          errors: errors.array()
-        });
-      }
-
       const { id } = req.params;
       const flavor = await Flavor.findByPk(id);
 
-      return res.statu(200).jsos({
+      return res.status(200).json({
         flavor
       });
     } catch (error) {
