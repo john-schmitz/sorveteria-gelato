@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(router);
 
 app.use(notFound);
-
 app.use(errorHandler);
 
-app.listen(5000);
-console.log("Rodando na porta ${5000}");
+app.listen(5000, () => {
+  console.log("Rodando na porta 5000");
+});

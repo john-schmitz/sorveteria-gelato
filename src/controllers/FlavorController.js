@@ -4,7 +4,13 @@ const Flavor = require('../models/Flavor');
 module.exports = {
   async all(req, res, next) {
     try {
-      const flavors = await Flavor.findAll();
+      const flavors = await Flavor.findAll({
+        where: {
+          quantity: {
+            [db.Sequelize.Op.gt]: 0
+          }
+        }
+      });
 
       return res.send({
         flavors
