@@ -9,7 +9,7 @@ app.use(requestLogger);
 
 app.use(express.json());
 
-app.use('/flavors', router);
+app.use(router);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -6,9 +6,9 @@ const validRequest = require('../middleware/validRequest');
 const router = new Router();
 
 //Rotas de sabores de sorvete
-router.get('', FlavorController.all);
-router.get('/:id', FlavorController.byId);
-router.post('', [...flavorVerification, validRequest], FlavorController.create);
+router.get('/flavors', FlavorController.all);
+router.get('/flavors/:id', FlavorController.byId);
+router.post('/flavors', [...flavorVerification, validRequest], FlavorController.create);
 
 
 module.exports = router;
