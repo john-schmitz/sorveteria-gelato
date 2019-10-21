@@ -1,4 +1,4 @@
-const Operators = require("../models/index").Sequelize.Op;
+const Operators = require('../models/index').Sequelize.Op;
 const Flavor = require('../models/Flavor');
 
 module.exports = {
@@ -48,5 +48,5 @@ module.exports = {
     } catch (error) {
       next(error);
     }
-  },
+  }
 }
