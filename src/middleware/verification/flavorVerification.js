@@ -4,7 +4,7 @@ const {
 
 module.exports = [
   check('name').isString(),
-  check('calories').isDecimal(),
+  check('calories_per_serving').isDecimal(),
   check('productLine').isString(),
   check('quantity').isInt(),
   check('price').isDecimal(),

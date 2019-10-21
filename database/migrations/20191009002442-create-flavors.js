@@ -11,7 +11,7 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      calories: {
+      calories_per_serving: {
         allowNull: false,
         type: DataTypes.DOUBLE,
       },

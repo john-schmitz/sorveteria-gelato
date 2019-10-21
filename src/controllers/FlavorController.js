@@ -1,16 +1,10 @@
-const db = require('../models');
+const db = require("../models/index");
 const Flavor = require('../models/Flavor');
 
 module.exports = {
   async all(req, res, next) {
     try {
-      const flavors = await Flavor.findAll({
-        where: {
-          quantity: {
-            [db.Sequelize.Op.gt]: 0
-          }
-        }
-      });
+      const flavors = await Flavor.findAll();
 
       return res.send({
         flavors
@@ -34,6 +28,9 @@ module.exports = {
     try {
       const { id } = req.params;
       const flavor = await Flavor.findByPk(id);
+      if(!flavor) {
+        return res.status(404).json({ message: 'Flavor not found' });
+      }
 
       return res.status(200).json({
         flavor
