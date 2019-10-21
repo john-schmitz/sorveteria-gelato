@@ -8,7 +8,7 @@ class Flavor extends Model {
     super.init({
       name: DataTypes.STRING,
       calories_per_serving: DataTypes.DOUBLE,
-      productLine: DataTypes.STRING,
+      product_line: DataTypes.STRING,
       quantity: DataTypes.INTEGER,
       price: DataTypes.DOUBLE
     }, {

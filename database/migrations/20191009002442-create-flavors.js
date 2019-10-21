@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DOUBLE,
       },
-      productLine: {
+      product_line: {
         allowNull: false,
         type: DataTypes.STRING
       },

@@ -1,4 +1,4 @@
-const db = require("../models/index");
+const Operators = require("../models/index").Sequelize.Op;
 const Flavor = require('../models/Flavor');
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
       const flavors = await Flavor.findAll({
         where: {
           quantity: {
-            [db.Sequelize.Op.gt]: 0
+            [Operators.gt]: 0
           }
         }
       });
@@ -21,7 +21,7 @@ module.exports = {
   },
   async create(req, res, next) {
     try {
-      const flavor = await Flavor.create(req.body)
+      const flavor = await Flavor.create(req.body);
 
       return res.status(201).json({
         flavor,
@@ -32,10 +32,14 @@ module.exports = {
   },
   async byId(req, res, next) {
     try {
-      const { id } = req.params;
+      const {
+        id
+      } = req.params;
       const flavor = await Flavor.findByPk(id);
-      if(!flavor) {
-        return res.status(404).json({ message: 'Flavor not found' });
+      if (!flavor) {
+        return res.status(404).json({
+          message: 'Flavor not found'
+        });
       }
 
       return res.status(200).json({
