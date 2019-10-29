@@ -1,7 +1,7 @@
 const {
   Model,
   DataTypes
-} = require('sequelize');
+} = require('sequelize'); 
 
 class Flavor extends Model {
   static init(sequelize) {
