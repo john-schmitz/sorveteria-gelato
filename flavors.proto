@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service Flavors {
+  rpc FetchAllFlavors () returns (repeated Flavor);
+  rpc CreateFlavor(CreateFlavorRequest) returns (Flavor);
+}
+
+message Flavor {
+  string name = 1;
+  int32 id = 2;
+  double calories_per_serving = 3;
+  string product_line = 4;
+  int32 quantity = 5;
+  double price = 6;
+  string created_at = 7;
+  string updated_at = 8;
+}
+
+message CreateFlavorRequest {
+  string name = 1;
+  double calories_per_serving = 2;
+  string product_line = 3;
+  int32 quantity = 4;
+  double price = 5;
+}

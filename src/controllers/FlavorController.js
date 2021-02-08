@@ -1,16 +1,12 @@
 const Operators = require('../models/index').Sequelize.Op;
 const Flavor = require('../models/Flavor');
 
+const FlavorService = require('../services/FlavorsService');
+
 module.exports = {
   async all(req, res, next) {
     try {
-      const flavors = await Flavor.findAll({
-        where: {
-          quantity: {
-            [Operators.gt]: 0
-          }
-        }
-      });
+      const flavors = await FlavorService.findAllFlavors();
 
       return res.send({
         flavors
@@ -21,7 +17,7 @@ module.exports = {
   },
   async create(req, res, next) {
     try {
-      const flavor = await Flavor.create(req.body);
+      const flavor = await FlavorService.create(req.body);
 
       return res.status(201).json({
         flavor,
@@ -35,7 +31,7 @@ module.exports = {
       const {
         id
       } = req.params;
-      const flavor = await Flavor.findByPk(id);
+      const flavor = await FlavorService.findById(id);
       if (!flavor) {
         return res.status(404).json({
           message: 'Flavor not found'
